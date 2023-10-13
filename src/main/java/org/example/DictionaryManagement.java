@@ -10,10 +10,12 @@ public class DictionaryManagement {
         // input
         Scanner sc = new Scanner(System.in);
         String wordTarget = sc.nextLine();
+        String wordPronunciation = sc.nextLine();
         String wordExplain = sc.nextLine();
         Word newWord = new Word();
         newWord.setWordTarget(wordTarget);
         newWord.setWordExplain(wordExplain);
+        newWord.setWordPronunciation(wordPronunciation);
         dictionary.add(newWord);
     }
 
@@ -44,7 +46,7 @@ public class DictionaryManagement {
             FileWriter fileWriter = new FileWriter(path);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (Word word : dictionary) {
-                bufferedWriter.write(word.getWordTarget() + "\t" + word.getWordExplain());
+                bufferedWriter.write(word.getWord());
                 bufferedWriter.newLine();
             }
             bufferedWriter.close();
@@ -58,7 +60,7 @@ public class DictionaryManagement {
             Scanner newScanner = new Scanner(System.in);
             for (int i = 0; i < dictionary.size(); i++) {
                 if(Objects.equals(dictionary.get(i).getWordTarget(), word)) {
-                    System.out.print(dictionary.get(i).getWord());
+                    System.out.print(dictionary.get(i).getWordTarget());
                     break;
                 }
             }
@@ -66,4 +68,25 @@ public class DictionaryManagement {
             e.printStackTrace();
         }
     }
+    public void updateWord(ArrayList<Word> dictionary, int index, String meaning, String path) {
+        try {
+            dictionary.get(index).setWordExplain(meaning);
+            dictionaryExportToFile(dictionary, path);
+        } catch (NullPointerException e) {
+            System.out.println("Null Exception.");
+        }
+    }
+
+    public void addWord(Word newWord, String path) {
+        try (FileWriter fileWriter = new FileWriter(path, true);
+             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+            bufferedWriter.write(newWord.getWord());
+            bufferedWriter.newLine();
+        } catch (IOException e) {
+            System.out.println("IOException.");
+        } catch (NullPointerException e) {
+            System.out.println("Null Exception.");
+        }
+    }
+
 }

@@ -5,10 +5,13 @@ package org.example;
 public class Word {
     private String wordTarget;
     private String wordExplain;
+    private String wordPronunciation;
 
     public Word() {
         this.wordTarget = "";
+        this.wordPronunciation = "";
         this.wordExplain = "";
+
     }
     public String getWordExplain() {
         return wordExplain;
@@ -25,7 +28,17 @@ public class Word {
     public void setWordTarget(String wordTarget) {
         this.wordTarget = wordTarget;
     }
+
+    public String getWordPronunciation() {
+        return wordPronunciation;
+    }
+
+    public void setWordPronunciation(String wordPronunciation) {
+        this.wordPronunciation = wordPronunciation;
+    }
+
+
     public String getWord() {
-        return (this.getWordTarget() + "\t" + this.getWordExplain());
+        return ("|" + this.getWordTarget() + "\n" + "*" + this.getWordPronunciation() + "\n" + "&" + this.getWordExplain());
     }
 }

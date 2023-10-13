@@ -94,8 +94,4 @@ public class DictionaryCommandline {
     public void dictionaryBasic(Dictionary dictionary) {
         DictionaryManagement dictionaryManagement;
     }
-
-    public static void main(String[] args) {
-        dictionaryAdvanced(Dictionary.dictionary);
-    }
 }
