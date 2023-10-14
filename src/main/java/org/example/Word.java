@@ -6,12 +6,19 @@ public class Word {
     private String wordTarget;
     private String wordExplain;
     private String wordPronunciation;
+    private String wordType;
 
     public Word() {
         this.wordTarget = "";
         this.wordPronunciation = "";
         this.wordExplain = "";
-
+        this.wordType = "";
+    }
+    public Word(String wordTarget, String wordPronunciation, String wordType, String wordExplain) {
+        this.wordTarget = wordTarget;
+        this.wordPronunciation = wordPronunciation;
+        this.wordExplain = wordExplain;
+        this.wordType = wordType;
     }
     public String getWordExplain() {
         return wordExplain;
@@ -37,8 +44,12 @@ public class Word {
         this.wordPronunciation = wordPronunciation;
     }
 
-
-    public String getWord() {
-        return ("|" + this.getWordTarget() + "\n" + "*" + this.getWordPronunciation() + "\n" + "&" + this.getWordExplain());
+    public void setWordType(String wordType) {
+        this.wordType = wordType;
     }
+
+    public String getWordType() {
+        return wordType;
+    }
+
 }
